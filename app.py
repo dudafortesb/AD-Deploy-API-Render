@@ -17,6 +17,10 @@ init_db()
 app.register_blueprint(upload_bp, url_prefix='/uploads')  
 app.register_blueprint(download_bp, url_prefix='/downloads')  
 
+@app.route('/')
+def home():
+    return {"mensagem": "API de Upload e Download funcionando!"}, 200
+    
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 10000))
     app.run(host='0.0.0.0', port=port, debug=False)  
